@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { generateApi } from "@/lib/api";
-import { buildProfileContext, historyDb } from "@/lib/db";
+import { buildProfileContext, historyDb, profileDb } from "@/lib/db";
 import { SparklesText } from "@/components/aceternity/SparklesText";
 import { AskForm } from "./AskForm";
 import { AnswerCard } from "./AnswerCard";
@@ -19,6 +19,18 @@ export default function AskPage() {
   const handleGenerate = async (data, charLimit) => {
     if (!data.jobDescription?.trim() || !data.question?.trim()) {
       setError("Please provide both a job description and a question.");
+      return;
+    }
+
+    try {
+      const experiences = await profileDb.getAll("experience");
+      if (!experiences || experiences.length === 0) {
+        setError("Your profile is incomplete. Please add at least one Experience entry to your profile before asking a question.");
+        return;
+      }
+    } catch (err) {
+      console.error("Failed to fetch profile during validation:", err);
+      setError("Failed to validate profile completeness.");
       return;
     }
 
