@@ -5,6 +5,7 @@ export const summaryConfig = [
     label: "Professional Summary",
     placeholder:
       "Write a brief professional summary about yourself — your background, strengths, and career goals...",
+    rows: 6,
     rules: { required: "This field is required" },
   },
 ];
@@ -57,7 +58,8 @@ export const experienceConfig = [
         label: "Description",
         placeholder:
           "Describe your responsibilities, achievements, or details...",
-        rows: 3,
+        rows: 4,
+        rules: { required: "This field is required" },
       },
     ],
   },
