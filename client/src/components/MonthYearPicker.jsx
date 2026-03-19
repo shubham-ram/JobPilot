@@ -17,7 +17,7 @@ const MONTHS = [
   "Dec",
 ];
 
-export function MonthYearPicker({
+function MonthYearPicker({
   value,
   onChange,
   disabled,
@@ -139,3 +139,5 @@ export function MonthYearPicker({
     </div>
   );
 }
+
+export default MonthYearPicker;

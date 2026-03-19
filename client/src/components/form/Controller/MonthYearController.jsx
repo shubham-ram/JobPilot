@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { Controller } from "react-hook-form";
-import { MonthYearPicker } from "@/pages/ProfilePage/MonthYearPicker";
+import MonthYearPicker from "@/components/MonthYearPicker";
 
 function MonthYearController(props, ref) {
   const {
