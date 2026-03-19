@@ -43,7 +43,7 @@ export const SECTIONS = [
     formConfig: projectsConfig,
   },
   {
-    key: "skill",
+    key: "skills",
     label: "Skills",
     icon: Wrench,
     description: "Technical and soft skills",
