@@ -2,7 +2,7 @@ import { getElement } from "../../getElement";
 import { Trash } from "lucide-react";
 
 function Child(props) {
-  const { controls, control, index, remove } = props;
+  const { controls, control, index, parentName, remove, errors } = props;
 
   return (
     <div className="relative px-6 py-4 mb-4 rounded-xl border border-border-default bg-bg-card hover:bg-bg-card-hover transition-colors group">
@@ -24,15 +24,16 @@ function Child(props) {
 
           return (
             <div
-              key={`${name}.${index}.${controlItem.name}`}
+              key={`${parentName}.${index}.${name}`}
               className={`col-span-${span}`}
               style={{ gridColumn: `span ${span} / span ${span}` }}
             >
               <Element
                 {...rest}
-                key={`${name}.${index}.${controlItem.name}`}
-                name={`${name}.${index}.${controlItem.name}`}
+                key={`${parentName}.${index}.${name}`}
+                name={`${parentName}.${index}.${name}`}
                 control={control}
+                errors={errors?.[parentName]?.[index]?.[name]}
               />
             </div>
           );

@@ -5,7 +5,8 @@ import Child from "./child";
 import { cn } from "../../../../lib/utils";
 
 function FieldArrayController(props) {
-  const { name, control, addButtonLabel, addButtonClassName, ...rest } = props;
+  const { name, control, errors, addButtonLabel, addButtonClassName, ...rest } =
+    props;
 
   const { fields, append, remove } = useFieldArray({
     name,
@@ -23,6 +24,8 @@ function FieldArrayController(props) {
             index={index}
             control={control}
             remove={remove}
+            parentName={name}
+            errors={errors}
           />
         );
       })}
