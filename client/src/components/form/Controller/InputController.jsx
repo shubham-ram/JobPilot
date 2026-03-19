@@ -29,17 +29,15 @@ function InputController(props, ref) {
           <input
             ref={ref}
             type={type}
-            error={errors[name]}
+            error={errors?.[name] || errors?.message}
             onChange={onChange}
             value={value || ""}
             onBlur={onBlur}
             className="w-full px-4 py-3 bg-bg-input border border-border-default rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all text-sm"
             {...rest}
           />
-          {errors[name] && (
-            <span className="text-danger text-xs mt-1 block">
-              {errors[name].message}
-            </span>
+          {(errors?.[name] || errors?.message) && (
+            <span className="text-danger text-xs mt-1 block"></span>
           )}
         </div>
       )}
