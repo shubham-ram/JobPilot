@@ -5,6 +5,8 @@ import { buildProfileContext, historyDb, profileDb } from "@/lib/db";
 import { SparklesText } from "@/components/aceternity/SparklesText";
 import { AskForm } from "./AskForm";
 import { AnswerCard } from "./AnswerCard";
+import { useProfileCompleteness } from "@/hooks/useProfileCompleteness";
+import { ProfileCompletenessBanner } from "./ProfileCompletenessBanner";
 
 export default function AskPage() {
   const [answer, setAnswer] = useState("");
@@ -12,6 +14,8 @@ export default function AskPage() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
   const [maxChars, setMaxChars] = useState("");
+
+  const completeness = useProfileCompleteness();
 
   // Store the last used inputs so we can regenerate with a new character limit
   const [lastInputs, setLastInputs] = useState(null);
@@ -25,7 +29,9 @@ export default function AskPage() {
     try {
       const experiences = await profileDb.getAll("experience");
       if (!experiences || experiences.length === 0) {
-        setError("Your profile is incomplete. Please add at least one Experience entry to your profile before asking a question.");
+        setError(
+          "Your profile is incomplete. Please add at least one Experience entry to your profile before asking a question.",
+        );
         return;
       }
     } catch (err) {
@@ -88,11 +94,15 @@ export default function AskPage() {
         </p>
       </div>
 
+      {/* Completeness UX */}
+      <ProfileCompletenessBanner completeness={completeness} />
+
       {/* Extracted Form */}
       <AskForm
         onSubmit={(data) => handleGenerate(data)}
         loading={loading}
         error={error}
+        completeness={completeness}
       />
 
       {/* Output Section */}
