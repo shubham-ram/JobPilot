@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Plus,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function SectionDisplay({ sectionKey, data, onEdit }) {
   if (!data || data.length === 0) {
@@ -13,7 +14,11 @@ export function SectionDisplay({ sectionKey, data, onEdit }) {
       <button
         type="button"
         onClick={onEdit}
-        className="w-full py-8 flex flex-col items-center justify-center bg-bg-secondary hover:bg-bg-input border border-dashed border-border-default hover:border-accent/40 rounded-xl transition-all cursor-pointer group"
+        className={cn(
+          "w-full py-8 flex flex-col items-center justify-center rounded-xl",
+          "bg-bg-secondary hover:bg-bg-input border border-dashed border-border-default hover:border-accent/40",
+          "transition-all cursor-pointer group"
+        )}
       >
         <div className="w-10 h-10 rounded-full bg-bg-card border border-border-default flex items-center justify-center mb-3 group-hover:scale-105 transition-transform shadow-sm">
           <Plus
@@ -138,7 +143,10 @@ export function SectionDisplay({ sectionKey, data, onEdit }) {
           {data.map((item, i) => (
             <div
               key={i}
-              className="p-4 rounded-xl border border-border-default bg-bg-secondary flex flex-col hover:border-accent/40 transition-colors"
+              className={cn(
+                "p-4 rounded-xl border border-border-default bg-bg-secondary",
+                "flex flex-col hover:border-accent/40 transition-colors"
+              )}
             >
               <h4 className="text-base font-semibold text-text-primary flex items-center gap-2">
                 <Code size={16} className="text-accent" />
@@ -172,7 +180,10 @@ export function SectionDisplay({ sectionKey, data, onEdit }) {
           {data.map((item, i) => (
             <div
               key={i}
-              className="px-3 py-1.5 rounded-full bg-bg-secondary border border-border-default flex items-center gap-2 text-sm font-medium text-text-primary hover:border-accent/50 transition-colors"
+              className={cn(
+                "px-3 py-1.5 rounded-full bg-bg-secondary border border-border-default flex items-center gap-2",
+                "text-sm font-medium text-text-primary hover:border-accent/50 transition-colors"
+              )}
             >
               <CheckCircle2 size={14} className="text-accent" />
               {item.skill || item.title}

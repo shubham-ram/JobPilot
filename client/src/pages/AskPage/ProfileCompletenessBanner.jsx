@@ -1,6 +1,7 @@
 import { Info, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export const ProfileCompletenessBanner = ({ completeness }) => {
   const [dismissed, setDismissed] = useState(false);
@@ -16,7 +17,12 @@ export const ProfileCompletenessBanner = ({ completeness }) => {
       : missingSections.join(" and ");
 
   return (
-    <div className="relative mb-8 bg-gradient-to-r from-accent/10 to-bg-card border border-accent/20 rounded-2xl p-5 shadow-sm overflow-hidden group animate-in fade-in slide-in-from-top-4 duration-500">
+    <div 
+      className={cn(
+        "relative mb-8 bg-gradient-to-r from-accent/10 to-bg-card border border-accent/20",
+        "rounded-2xl p-5 shadow-sm overflow-hidden group animate-in fade-in slide-in-from-top-4 duration-500"
+      )}
+    >
       <div
         className="absolute top-0 left-0 h-1 bg-accent transition-all duration-1000 ease-out"
         style={{ width: `${percent}%` }}
@@ -41,7 +47,10 @@ export const ProfileCompletenessBanner = ({ completeness }) => {
         <div className="flex flex-shrink-0 items-center justify-end gap-3 self-end md:self-auto">
           <Link
             to="/profile"
-            className="flex items-center gap-1.5 text-xs font-semibold bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent-hover transition-colors shadow-sm shadow-accent/20"
+            className={cn(
+              "flex items-center gap-1.5 text-xs font-semibold bg-accent text-white px-4 py-2 rounded-lg",
+              "hover:bg-accent-hover transition-colors shadow-sm shadow-accent/20"
+            )}
           >
             Complete Profile
             <ChevronRight className="w-4 h-4" />

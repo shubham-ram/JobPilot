@@ -1,5 +1,6 @@
 import { Loader2, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import { useAskForm } from "@/hooks/useAskForm";
 import { getAskFormConfig } from "@/config/getAskFormConfig";
 import { DynamicField } from "@/components/form/DynamicField";
@@ -37,13 +38,13 @@ export function AskForm({ onSubmit, loading, error, completeness }) {
             navigate("/profile");
           }
         }}
-        className={`w-full py-3.5 px-6 font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 ${
-          completeness?.loading
-            ? "bg-bg-input text-text-muted cursor-wait"
-            : completeness?.isCriticallyEmpty
-              ? "bg-danger hover:bg-danger-hover text-white cursor-pointer shadow-danger/20 hover:shadow-danger/40"
-              : "bg-accent hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-white cursor-pointer"
-        }`}
+        className={cn(
+          "w-full py-3.5 px-6 font-semibold rounded-xl transition-all duration-200",
+          "flex items-center justify-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40",
+          completeness?.loading && "bg-bg-input text-text-muted cursor-wait",
+          completeness?.isCriticallyEmpty && !completeness?.loading && "bg-danger hover:bg-danger-hover text-white cursor-pointer shadow-danger/20 hover:shadow-danger/40",
+          !completeness?.isCriticallyEmpty && !completeness?.loading && "bg-accent hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-white cursor-pointer"
+        )}
       >
         {completeness?.isCriticallyEmpty ? (
           "Update Profile to Generate"

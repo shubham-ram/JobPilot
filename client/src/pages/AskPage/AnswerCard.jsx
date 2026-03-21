@@ -1,6 +1,7 @@
 import { Copy, Check, RefreshCw } from "lucide-react";
 import { BackgroundGradient } from "@/components/aceternity/BackgroundGradient";
 import { TextGenerateEffect } from "@/components/aceternity/TextGenerateEffect";
+import { cn } from "@/lib/utils";
 
 export function AnswerCard({
   answer,
@@ -22,7 +23,10 @@ export function AnswerCard({
           </h2>
           <button
             onClick={onCopy}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm text-text-secondary hover:text-accent bg-bg-secondary rounded-lg transition-all cursor-pointer"
+            className={cn(
+              "flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg transition-all cursor-pointer",
+              "text-text-secondary hover:text-accent bg-bg-secondary"
+            )}
           >
             {copied ? (
               <>
@@ -66,12 +70,20 @@ export function AnswerCard({
                 onChange={(e) => setMaxChars(e.target.value)}
                 placeholder="e.g. 500"
                 min="50"
-                className="w-24 px-2.5 py-1.5 bg-bg-input border border-border-default rounded-lg text-text-primary placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className={cn(
+                  "w-24 px-2.5 py-1.5 bg-bg-input border border-border-default rounded-lg",
+                  "text-text-primary placeholder-text-muted text-sm transition-all focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30",
+                  "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                )}
               />
               <button
                 onClick={() => onRegenerate(maxChars)}
                 disabled={loading || !maxChars}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-text-secondary hover:text-accent bg-bg-secondary hover:bg-bg-card-hover rounded-lg transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg transition-all cursor-pointer",
+                  "text-text-secondary hover:text-accent bg-bg-secondary hover:bg-bg-card-hover",
+                  "disabled:opacity-40 disabled:cursor-not-allowed"
+                )}
               >
                 <RefreshCw size={13} />
                 Regenerate to fit

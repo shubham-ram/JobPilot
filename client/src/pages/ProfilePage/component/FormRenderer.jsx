@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { cn } from "@/lib/utils";
 import { getElement } from "../../../components/form/getElement";
 import { SectionDisplay } from "./SectionDisplay";
 import { Pencil } from "lucide-react";
@@ -48,7 +49,11 @@ function FormRenderer({ sectionKey, entries, formConfig, handleSave }) {
           <button
             type="button"
             onClick={() => setIsEditing(true)}
-            className="absolute -top-3 right-0 p-2 text-text-muted hover:text-accent bg-bg-card hover:bg-bg-input rounded-lg border border-transparent shadow-sm hover:border-border-default transition-all opacity-0 group-hover:opacity-100 flex items-center gap-2 cursor-pointer z-10"
+            className={cn(
+              "absolute -top-3 right-0 p-2 text-text-muted hover:text-accent bg-bg-card hover:bg-bg-input rounded-lg",
+              "border border-transparent shadow-sm hover:border-border-default transition-all",
+              "opacity-0 group-hover:opacity-100 flex items-center gap-2 cursor-pointer z-10"
+            )}
           >
             <Pencil size={15} />
             <span className="text-xs font-semibold">Edit</span>
@@ -75,13 +80,19 @@ function FormRenderer({ sectionKey, entries, formConfig, handleSave }) {
         <button
           type="button"
           onClick={handleCancel}
-          className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-bg-card hover:bg-bg-card-hover border border-border-default rounded-lg transition-colors cursor-pointer"
+          className={cn(
+            "px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary",
+            "bg-bg-card hover:bg-bg-card-hover border border-border-default rounded-lg transition-colors cursor-pointer"
+          )}
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="px-5 py-2 text-sm font-medium bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors shadow-md shadow-accent/20 cursor-pointer"
+          className={cn(
+            "px-5 py-2 text-sm font-medium bg-accent text-white rounded-lg",
+            "hover:bg-accent-hover transition-colors shadow-md shadow-accent/20 cursor-pointer"
+          )}
         >
           Save Changes
         </button>
