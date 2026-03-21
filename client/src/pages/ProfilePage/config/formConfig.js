@@ -172,7 +172,7 @@ export const skillsConfig = [
       {
         name: "skill",
         type: "text",
-        label: "Skill",
+        // label: "Skill",
         placeholder: "React.js",
         rules: { required: "This field is required" },
       },
