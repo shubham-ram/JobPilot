@@ -39,11 +39,11 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-border-default">
+      {/* <div className="p-4 border-t border-border-default">
         <p className="text-xs text-text-muted text-center">
           Powered by Gemini AI
         </p>
-      </div>
+      </div> */}
     </aside>
   );
 }
