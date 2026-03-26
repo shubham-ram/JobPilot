@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3001/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001/api";
 
 // ─── Generate (the only server call) ─────────────────────────
 
@@ -9,6 +9,7 @@ export const generateApi = {
     question,
     companyName,
     maxChars,
+    captchaToken,
   }) {
     const res = await fetch(`${API_BASE}/generate`, {
       method: "POST",
@@ -19,6 +20,7 @@ export const generateApi = {
         question,
         companyName,
         maxChars,
+        captchaToken,
       }),
     });
 

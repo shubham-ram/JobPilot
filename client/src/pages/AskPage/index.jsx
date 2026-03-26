@@ -55,6 +55,7 @@ export default function AskPage() {
         question: data.question,
         companyName: data.companyName || undefined,
         maxChars: effectiveLimit,
+        captchaToken: data.captchaToken,
       });
       setAnswer(result.answer);
 
